@@ -17,17 +17,18 @@ angular.module('veeva').controller('dateAlgorithmCtrl', ['dateUtils',
                     disleapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                 if (yearStr % 4 === 0) {
                     leapYear.length = monthStr - 1;
-                    num = leapYear && leapYear.reduce(function (prev, cur) {
-                            return prev + cur
-                        });
-                    num=num+dayStr;
+
+                    num = leapYear.length == 0 ? leapYear : leapYear.reduce(function (prev, cur) {
+                        return prev + cur
+                    });
+                    num = num + dayStr;
                     console.log("閏年")
                 } else {
                     disleapYear.length = monthStr - 1;
-                    num = disleapYear &&disleapYear.reduce(function (prev, cur) {
-                            return prev + cur
-                        });
-                    num += dayStr
+                    num = disleapYear.length ==0 ? disleapYear : disleapYear.reduce(function (prev, cur) {
+                        return prev + cur
+                    });
+                    num = num + dayStr;
                 }
 
                 console.log(num);
