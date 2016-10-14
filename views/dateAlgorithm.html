@@ -1,0 +1,10 @@
+<div>
+    <input type="number" id="time.year" placeholder="年"
+           ng-model="vm.time.year">
+    <input type="number" id="time.month" placeholder="月"
+           ng-model="vm.time.month">
+    <input type="number" id="time.day" placeholder="日"
+           ng-model="vm.time.day">
+    您输入的是{{vm.time.year}}年的第{{vm.time.number}}天！
+    <button ng-click="vm.btns(vm.time.month,vm.time.day)"></button>
+</div>

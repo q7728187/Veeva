@@ -1,0 +1,11 @@
+@charset "utf-8";
+.box{
+    display: inline-block;
+    position: relative;
+}
+.introduce{
+    position: absolute;
+    right: 10px;
+    top:0;
+    margin: 10px;
+}
