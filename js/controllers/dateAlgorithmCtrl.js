@@ -5,22 +5,35 @@
 angular.module('veeva').controller('dateAlgorithmCtrl', ['dateUtils',
     function (dateUtils) {
         var vm = this;
-    vm.time={};
-     // vm.time.month=new Number();
-     // vm.time.day=new Number();
-        // vm.time.number
-        console.log(vm.time.day);
-        vm.btns=function (monthStr,dayStr) {
-            vm.time.number=(function (monthStr,dayStr) {
-                alert("a");
-                var num= (275*monthStr)/9 - (dayStr+9)/12 + dayStr - 30;
-                console.log(num);
+        vm.time = {};
 
+        vm.btns = function () {
+            vm.time.number = (function () {
+                var num;
+                var yearStr = vm.time.year,
+                    monthStr = vm.time.month,
+                    dayStr = vm.time.day,
+                    leapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+                    disleapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                if (yearStr % 4 === 0) {
+                    leapYear.length = monthStr - 1;
+                    num = leapYear && leapYear.reduce(function (prev, cur) {
+                            return prev + cur
+                        });
+                    num=num+dayStr;
+                    console.log("閏年")
+                } else {
+                    disleapYear.length = monthStr - 1;
+                    num = disleapYear &&disleapYear.reduce(function (prev, cur) {
+                            return prev + cur
+                        });
+                    num += dayStr
+                }
+
+                console.log(num);
                 return num;
             })();
-            console.log(vm.time.number);
         };
 
 
-
-}]);
+    }]);
